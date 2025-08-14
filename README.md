@@ -1,4 +1,42 @@
+# Install DB
+
+```
+Refer MY Node.js-2-tier
+```
+
+# Server B (Backend)
+### Install python
+```
+sudo yum update -y
+sudo yum install git -y
+sudo yum install python3 -y
+sudo yum install python3-pip -y
+```
+
+git clone 
+
+```
+git clone https://github.com/sapsecops/My-python-EMS.git
+cd My-python-EMS
+```
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 manage.py makemigrations employees
+python3 manage.py migrate
+pip install gunicorn
+gunicorn backend.wsgi:application --bind 0.0.0.0:8000
+```
 # Server A (Frontend)
+
+### Install Node.js
+```
+sudo yum install git -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 16
+```
 
 ```
 cd frontend
@@ -10,24 +48,6 @@ npm run build
 Copy build/ to /var/www/html or Nginx root
 ```
 
-# Server B (Backend)
-
-```
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 manage.py makemigrations employees
-python3 manage.py migrate
-pip install gunicorn
-gunicorn backend.wsgi:application --bind 0.0.0.0:8000
-```
-
-# Server C (MongoDB)
-```
-mongod --auth --bind_ip 0.0.0.0
-Create DB and user with credentials in .env
-
-```
 
 # use Nginx for Backend and Frontend
 
