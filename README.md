@@ -144,3 +144,80 @@ MONGO_DB_CONFIG = {
     "HOST": "mongodb://mongo_user:StrongPassword123@mongo-server-ip:27017/employeedb",
     "NAME": "employeedb"
 ```
+
+# Docker
+
+### Docker Backend
+
+Dockerfile
+```
+# Use official Python image as base
+FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set work directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY requirements.txt /app/
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+# Copy project
+COPY . /app/
+
+# Copy your environment variables (optional)
+# COPY .env /app/
+
+# Expose port 8000
+EXPOSE 8000
+
+# Run migrations and start server
+CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+```
+.dockerignore
+```
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+env
+venv
+.env
+build
+dist
+*.egg-info
+```
+Environment Variable Configuration
+Create .env.sample file (not checked into source control) for MongoDB parameters:
+```
+MONGO_USER=appuser
+MONGO_PASS=pa55Word
+MONGO_HOST=AWS-DB-Private-IP
+MONGO_DB=employeedb
+```
+Build the image:
+```
+docker build -t employee-backend:latest 
+```
+
+Run the container passing environment variables:
+
+```
+docker run -d -p 8000:8000 \
+  -e MONGO_USER=appuser \
+  -e MONGO_PASS=pa55Word \
+  -e MONGO_HOST=AWS-DB-Private-IP \
+  -e MONGO_DB=employeedb \
+  --name employee-backend employee-backend:latest
+```
