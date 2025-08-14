@@ -65,7 +65,11 @@ mongosh
 ```
 use admin
 ```
+### switch to employeedb DB
 
+```
+use employeedb
+```
 ### Create Application User
 
 ```
