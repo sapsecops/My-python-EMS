@@ -1,12 +1,12 @@
-Server A (Frontend)
+# Server A (Frontend)
 
 cd frontend
 npm install
 npm run build
-# Copy build/ to /var/www/html or Nginx root
+Copy build/ to /var/www/html or Nginx root
 
 
-Server B (Backend)
+# Server B (Backend)
 
 cd backend
 pip install -r requirements.txt
@@ -14,10 +14,10 @@ python manage.py migrate
 gunicorn backend.wsgi:application --bind 0.0.0.0:8000
 
 
-Server C (MongoDB)
+# Server C (MongoDB)
 
 mongod --auth --bind_ip 0.0.0.0
-# Create DB and user with credentials in .env
+Create DB and user with credentials in .env
 
 
 # use Nginx for Backend and Frontend
