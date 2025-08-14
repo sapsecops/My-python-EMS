@@ -2,7 +2,9 @@
 
 ```
 cd frontend
+sudo chown -R ec2-user:ec2-user /home/ec2-user/My-python-EMS
 npm install
+npm install react-scripts --save
 npm run build
 Copy build/ to /var/www/html or Nginx root
 ```
@@ -13,6 +15,7 @@ Copy build/ to /var/www/html or Nginx root
 cd backend
 pip install -r requirements.txt
 python manage.py migrate
+pip install gunicorn
 gunicorn backend.wsgi:application --bind 0.0.0.0:8000
 ```
 
