@@ -1,11 +1,13 @@
 # Server A (Frontend)
 
 ```
-npx create-react-app employee_frontend
-cd employee_frontend
+cd frontend
+sudo chown -R ec2-user:ec2-user /home/ec2-user/My-python-EMS
+npm install
 npm install axios
-Overwrite files with above src files and config.js
-npm start
+npm install react-scripts --save
+npm run build
+Copy build/ to /var/www/html or Nginx root
 ```
 
 # Server B (Backend)
@@ -14,11 +16,10 @@ npm start
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-export $(cat .env | xargs)
 python3 manage.py makemigrations employees
 python3 manage.py migrate
-python3 manage.py runserver 0.0.0.0:8000
+pip install gunicorn
+gunicorn backend.wsgi:application --bind 0.0.0.0:8000
 ```
 
 # Server C (MongoDB)
