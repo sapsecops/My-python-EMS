@@ -1,0 +1,36 @@
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.button-group button {
+  margin-right: 10px;
+}
+
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+.employee-form input {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.employee-list {
+  list-style: none;
+  padding: 0;
+}
+
+.employee-list li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.profile-pic {
+  max-width: 80px;
+  border-radius: 4px;
+  margin-top: 5px;
+}
