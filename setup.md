@@ -6,20 +6,22 @@ Connect to the admin database to create a user
 ```
 use admin
 ```
-Create a user with read/write access to the 'user-account' database
-```
-db.createUser({
-  user: "appuser",
-  pwd: "pa55Word", // Use the same password as in your .env file
-  roles: [
-    { role: "readWrite", db: "user-account" }
-  ]
-})
-```
+
 Switch to your application's database
 ```
 use user-account
 ```
+Create a user with read/write access to the 'user-account' database
+```
+db.createUser({
+  user: "appuser",
+  pwd: "pa55Word",
+  roles: [
+    { role: "readWrite", db: "user-account" }
+  ]
+});
+```
+
 // The 'users' collection will be created automatically
 // when the backend inserts the first document.
 // You can optionally create it explicitly:
