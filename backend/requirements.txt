@@ -1,6 +1,7 @@
 Django>=4.2
-djangorestframework
-djongo
-pymongo
-python-dotenv
-Pillow
+djangorestframework>=3.15.0
+pymongo>=4.7.0
+python-dotenv>=1.0.1
+Pillow>=10.4.0
+django-cors-headers>=4.4.0
+
