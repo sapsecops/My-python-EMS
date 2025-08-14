@@ -104,7 +104,7 @@ pip install -r requirements.txt
 python3 manage.py makemigrations employees
 python3 manage.py migrate
 pip install gunicorn
-gunicorn backend.wsgi:application --bind 0.0.0.0:8000
+gunicorn employee_backend.wsgi:application --bind 0.0.0.0:8000
 ```
 # Server A (Frontend)
 
@@ -120,10 +120,41 @@ nvm install 16
 cd frontend
 sudo chown -R ec2-user:ec2-user /home/ec2-user/My-python-EMS
 npm install
-npm install axios
-npm install react-scripts --save
+```
+
+Install nginx 
+```
+sudo yum install nginx -y
+```
+1️⃣ Create public/index.html
+
+Create public folder if it doesn’t exist:
+
+mkdir -p public
+
+
+Then create index.html:
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Frontend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+```
+```
 npm run build
+```
 Copy build/ to /var/www/html or Nginx root
+```
+sudo rm -rf /usr/share/nginx/html/*
+sudo cp -r build/* /usr/share/nginx/html/
+sudo systemctl restart nginx
 ```
 
 
