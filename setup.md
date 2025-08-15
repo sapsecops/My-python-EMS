@@ -1,5 +1,15 @@
 # DB
 ```
+sudo vim /etc/mongod.conf
+```
+
+```
+net:
+  port: 27017
+  bindIp: 0.0.0.0 # Allows connections from any IP within the VPC
+```
+
+```
 mongosh
 ```
 Connect to the admin database to create a user
@@ -28,15 +38,7 @@ db.createUser({
 ```
 db.createCollection("users")
 ```
-```
-sudo vim /etc/mongod.conf
-```
 
-```
-net:
-  port: 27017
-  bindIp: 0.0.0.0 # Allows connections from any IP within the VPC
-```
 # Backend
 ```
 SSH into the Backend instance.
@@ -66,6 +68,10 @@ Edit src/config.js and set API_URL to the Backend instance's Private IP.
 Install dependencies: npm install.
 
 Create a production build: npm run build.
+
+sudo rm -rf /usr/share/nginx/html/*
+sudo mv build/* /usr/share/nginx/html/
+RUN chmod -R 755 /usr/share/nginx/html
 
 Configure Nginx to serve the contents of the build directory. This makes your React app accessible via the instance's public IP.
 ```
