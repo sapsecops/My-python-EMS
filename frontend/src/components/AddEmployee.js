@@ -40,7 +40,7 @@ const AddEmployee = ({ employeeToEdit, onFinished }) => {
 
   return (
     <form onSubmit={handleSubmit} className="employee-form">
-      <h2>{isEditing ? 'Edit Employee' : 'Add New Employee'}</h2>
+      <h2>{isEditing ? 'Edit Employee' : 'Add SapSecOps Employee'}</h2>
       <input name="name" value={employee.name} onChange={handleChange} placeholder="Name" required />
       <input name="email" value={employee.email} onChange={handleChange} placeholder="Email" type="email" required />
       <input name="designation" value={employee.designation} onChange={handleChange} placeholder="Designation" required />

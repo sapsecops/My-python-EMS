@@ -37,7 +37,7 @@ const EmployeeList = ({ onEdit }) => {
 
   return (
     <div className="employee-list">
-      <h2>Employee List</h2>
+      <h2>SapSecOps Employee List</h2>
       <table>
         <thead>
           <tr>
