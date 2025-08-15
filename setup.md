@@ -71,7 +71,7 @@ Create a production build: npm run build.
 
 sudo rm -rf /usr/share/nginx/html/*
 sudo mv build/* /usr/share/nginx/html/
-RUN chmod -R 755 /usr/share/nginx/html
+sudo chmod -R 755 /usr/share/nginx/html
 
 Configure Nginx to serve the contents of the build directory. This makes your React app accessible via the instance's public IP.
 ```
