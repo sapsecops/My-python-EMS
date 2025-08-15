@@ -15,7 +15,7 @@ Create a user with read/write access to the 'user-account' database
 ```
 db.createUser({
   user: "appuser",
-  pwd: "pa55Word",
+  pwd: "Pa55Word",
   roles: [
     { role: "readWrite", db: "user-account" }
   ]
