@@ -100,10 +100,9 @@ Clone your frontend code repository.
 
 Edit src/config.js and set API_URL to the Backend instance's Private IP.
 
-Install dependencies: npm install.
-
-Create a production build: npm run build.
-
+Install dependencies: 
+npm install react-scripts --save
+npm install
 ```
 
 create nginx.conf for reverse proxy for Backend
@@ -165,8 +164,9 @@ create frontend dir
 sudo mkdir =p /var/www/frontend/
 sudo chmod -R 755 /usr/share/nginx/html
 ```
+Create a production build: 
 ```
-npm run build
+npm run build.
 ```
 
 ```
